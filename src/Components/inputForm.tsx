@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import UserTable from './table';
 import NotFoundError from './notFoundError';
 import axios from 'axios';
+import { setFlagsFromString } from 'v8';
 interface IState{
   user:{
     login:String,
@@ -12,6 +13,7 @@ interface IState{
     type:String
    }[]
 }
+
 export const InputForm = () => {
     const url = "https://api.github.com/search/users?q="
     const [login , setLogin]  =  useState<String>();
@@ -24,8 +26,22 @@ export const InputForm = () => {
     const handleSubmit = async()=>{
         try{
      const result = await axios.get((url+login))
-     if(result.data.items.length > 0){
-     setUsers(result.data.items.map((item:any)=>{
+     const items = result.data.items;
+     if(items.length > 0)
+     {
+       // items sorted by login
+      items.sort(function(a:any, b:any) {
+        const loginA = a.login.toUpperCase(); 
+        const loginB = b.login.toUpperCase(); 
+        if (loginA < loginB) {
+          return -1;
+        }
+        if (loginA > loginB) {
+          return 1;
+        }
+        return 0;
+      });
+     setUsers(items.map((item:any)=>{
       return {
        login: item.login,
        avatar_url : item.avatar_url,
