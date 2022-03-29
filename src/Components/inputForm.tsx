@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import UserTable from './table';
 import NotFoundError from './notFoundError';
 import axios from 'axios';
-import { setFlagsFromString } from 'v8';
 interface IState{
   user:{
     login:String,
@@ -25,7 +24,9 @@ export const InputForm = () => {
     }
     const handleSubmit = async()=>{
         try{
+          setUsers([]);
      const result = await axios.get((url+login))
+     
      const items = result.data.items;
      if(items.length > 0)
      {
@@ -49,6 +50,7 @@ export const InputForm = () => {
       }
      }))
      setNotFoundError(undefined);
+     setLogin("");
     }
     else{
       setNotFoundError("User Not Found")
@@ -64,7 +66,7 @@ export const InputForm = () => {
         <Typography variant="h5" mb={5}>
   Nova Task # 3
 </Typography>
-           <TextField  label={`Search example = "Foo"`} id="margin-none"  onChange ={handleOnChange}/>
+           <TextField  label={`Search example = "Foo"`} value = {login} id="margin-none"  onChange ={handleOnChange}/>
     <Button variant="contained" sx={{height:"55px"}} onClick={handleSubmit} endIcon={<SendIcon />}>
     Submit
   </Button>
