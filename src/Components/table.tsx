@@ -19,7 +19,7 @@ const UserTable = (props:PState) => {
           type: 'string',
           width: 200,
           sortable: false,
-          renderCell: (params) => <img style={{borderRadius:"50%", width:"60px", height:"60px"}} src={params.value} />
+          renderCell: (params) => <img style={{borderRadius:"50%", width:"40px", height:"40px"}} src={params.value} />
         },
         {
           field: 'login',
