@@ -45,9 +45,14 @@ const UserTable = (props:PState) => {
       
     <Box sx={{width:"50%" , height:"600px"}}>
       <DataGrid
+      sx={{
+  
+          backgroundColor: 'white',
+      }}
         rows={rows}
-        columns={columns}
+        columns={columns }
         pageSize={9}
+        rowsPerPageOptions={[9]}
           disableColumnMenu
       />
     </Box>

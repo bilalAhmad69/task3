@@ -30,9 +30,9 @@ export const InputForm = () => {
      if(items.length > 0)
      {
        // items sorted by login
-      items.sort(function(a:any, b:any) {
-        const loginA = a.login.toUpperCase(); 
-        const loginB = b.login.toUpperCase(); 
+      items.sort(function(itemA:any, itemB:any) {
+        const loginA = itemA.login.toUpperCase(); 
+        const loginB = itemB.login.toUpperCase(); 
         if (loginA < loginB) {
           return -1;
         }
