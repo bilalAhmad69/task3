@@ -48,11 +48,6 @@ const UserTable = (props:PState) => {
         rows={rows}
         columns={columns}
         pageSize={9}
-        initialState={{
-            sorting: {
-              sortModel: [{ field: 'login', sort: 'desc' }],
-            },
-          }}
           disableColumnMenu
       />
     </Box>
