@@ -4,7 +4,9 @@ Nova Task No_3
 ## Dependency Used
  All the Dependency is available in package.json file
 
-
+## Prerequisites
+    1. Node (You can download from this link  https://nodejs.org)
+    2. Any Text-Editor (visual code or sublime etc)
 ### How To Run This Project ?
     steps:
         1. clone the project in your local storage
