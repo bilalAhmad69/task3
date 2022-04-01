@@ -13,7 +13,7 @@ function App() {
     <div className='App'>
     <Routes>
       <Route path="/" element={<InputForm/>}/> 
-      <Route path="/data" element={<Table/>}/> 
+      <Route path="/data/:id" element={<Table/>}/> 
       <Route path="*" element={<NotFoundError error = "Path Not Found"/>}/>
     </Routes>
     </div>

@@ -13,8 +13,7 @@ export const InputForm = () => {
         setLogin(e.target.value);
     }
     const handleSubmit = ()=>{
-      const url = "https://api.github.com/search/users?q=";
-      location && navigate(`/data?id=${login}`);
+      location && navigate(`/data/${login}`);
     
     }
   return (
