@@ -3,7 +3,6 @@ import Button from '@mui/material/Button'
 import { Box ,  TextField,Typography} from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate , useLocation } from 'react-router-dom';
-
 export const InputForm = () => {
 
   const location = useLocation();
@@ -14,9 +13,8 @@ export const InputForm = () => {
         setLogin(e.target.value);
     }
     const handleSubmit = ()=>{
-      location && navigate(`/data/${login}`,{
-        state:location.pathname,
-      })
+      const url = "https://api.github.com/search/users?q=";
+      location && navigate(`/data?id=${login}`);
     
     }
   return (

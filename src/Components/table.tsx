@@ -1,8 +1,8 @@
 import { DataGrid, GridColDef} from '@mui/x-data-grid';
 import { Box , Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useParams , Link  , useLocation} from 'react-router-dom';
-import {  useEffect, useState } from 'react';
+import { useParams , Link} from 'react-router-dom';
+import {  useEffect , useState } from 'react';
 import NotFoundError from './notFoundError';
 import CircularProgress from '@mui/material/CircularProgress';
 import axios from 'axios';
@@ -15,18 +15,15 @@ interface IState{
 }
 const UserTable = () => {
  
-  
-  const url = "https://api.github.com/search/users?q="
+  const url = "https://api.github.com/search/users?q=";
   const [users, setUsers] =  useState<IState["user"]>([])
   const [notFoundError , setNotFoundError] = useState<any>();
   const [isLoading , setIsLoading] = useState<boolean>(true);
    const {id} = useParams();
-   const {state} = useLocation();
-  
 const getUserData= async () =>{
  try{
       setUsers([]);
- const result = await axios.get((url+id))
+ const result = await axios.get(url+id)
  const items = result.data.items;
  if(items.length > 0)
  {
@@ -97,16 +94,6 @@ else{
     const rows = users.map((user:any , index:number)=>{
      return  {id: index ,login:user.login,type:user.type, avatar:user.avatar_url}
     })
-    // if user not come from Home
-    if (state !== "/") return (
-      <Box sx={{width:"50%" , height:"600px"}}>
-      <Link to = "/">   <Button variant="contained" sx={{height:"40px" , display:"flex"}} startIcon={<ArrowBackIosIcon />}>
-    Back To Home
-  </Button>
-  <NotFoundError error = {"Kindly Come From Home Page"}/>
-  </Link> 
-  </Box>
-    )
     // loading is true during data fetching
  {if (isLoading) return <CircularProgress />}
    return (
