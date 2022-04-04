@@ -65,9 +65,6 @@ else{
 
   },[])
     const columns: GridColDef[] = [
-        { field: 'avatar', headerName: 'Avatar', width: 300 },
-        { field: 'login', headerName: 'login', width: 300 },
-        { field: 'type', headerName: 'type', width: 20 },
         {
           field: 'avatar',
           headerName: 'Avatar',
@@ -105,6 +102,7 @@ else{
      {notFoundError?<NotFoundError error = {notFoundError}/>:
     // if data found then sucessfully loaded
       <DataGrid
+      data-testid="table"
       sx={{
   
           backgroundColor: 'white',
